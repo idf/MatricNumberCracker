@@ -1,10 +1,12 @@
+from multiprocessing import Process
+
 BASE = 11
 NUM_PS = BASE
 ERROR_THRESHOLD = 0.2
 LENGTH = 7
 MAX = BASE**LENGTH
 
-from multiprocessing import Process
+
 candiates_sum = {
   0: "a", 
   1: "b",
@@ -50,7 +52,7 @@ class Worker(Process):
     self.upper = upper
   def run(self):
     for offset in range(1): # offset does not matter now
-      for i in xrange(self.lower, self.upper): # 0 to 11**8-1 # BASE**8
+      for i in xrange(self.lower, self.upper): 
 
         weight = []
         for j in xrange(LENGTH):
@@ -73,14 +75,14 @@ class Worker(Process):
         else: 
           result = "offset: %d, %s, error_rate: %f"%(offset, str(weight), error_rate)
           print result
-          self.q.append(result)
+         
 
 
 if __name__ == "__main__":
   workers = {}
-  for i in range(NUM_PS):
+  for i in xrange(NUM_PS):
     workers[i] = Worker(i*MAX/NUM_PS, (i+1)*MAX/NUM_PS)
     workers[i].start()
 
-  for i in range(NUM_PS):
+  for i in xrange(NUM_PS):
     workers[i].join()

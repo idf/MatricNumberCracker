@@ -102,6 +102,10 @@ validate_set = {
   "1321465": "e",
   "1120733": "c",
   "1122643": "e",
+  "1310088": "g",
+  "1210269": "e",
+  "1122741": "b",
+  "1110005": "g",
 }
 weight = [10, 7, 4, 3, 2, 9, 8] # calculated by matric_hash.py
 offset = 0
@@ -118,10 +122,7 @@ def validate():
 
 def guess():
   numbers = [
-    "1310088", #g
-    "1210269", #e
-    "1122741", #b
-    "1110005", #g
+    "1220504", 
   ]
   print "Guessing..."
   for number in numbers:
